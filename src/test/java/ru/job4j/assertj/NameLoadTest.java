@@ -18,7 +18,7 @@ class NameLoadTest {
     }
 
     @Test
-    void  checkMessage() {
+    void  checkMessageSymbol() {
         NameLoad nameLoad = new NameLoad();
         assertThatThrownBy(() -> nameLoad.parse("Job4j"))
                 .isInstanceOf(IllegalArgumentException.class)
@@ -27,11 +27,27 @@ class NameLoadTest {
     }
 
     @Test
-    void checkMessageThrow() {
+    void checkMessageKey() {
         NameLoad nameLoad = new NameLoad();
         assertThatThrownBy(() -> nameLoad.parse("=Job4j"))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("does not contain a key");
+    }
+
+    @Test
+    void checkMessageValue() {
+        NameLoad nameLoad = new NameLoad();
+        assertThatThrownBy(() -> nameLoad.parse("Job4j="))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("does not contain a value");
+    }
+
+    @Test
+    void checkArrayEmty() {
+        NameLoad nameLoad = new NameLoad();
+        assertThatThrownBy(nameLoad::parse)
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("Names array is empty");
     }
 
 }
