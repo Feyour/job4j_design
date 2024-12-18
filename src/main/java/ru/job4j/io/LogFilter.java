@@ -19,7 +19,7 @@ public class LogFilter {
         try (BufferedReader input = new BufferedReader(new FileReader(file))) {
               input.lines()
                     .filter(line -> {
-                        String[] strings = line.split("\\s");
+                        String[] strings = line.split("\\s"); 
                         return ("404").equals(strings[strings.length - 2]);
                     })
                     .forEach(result::add);
