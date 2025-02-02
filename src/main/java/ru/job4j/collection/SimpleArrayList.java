@@ -63,7 +63,6 @@ public class SimpleArrayList<T> implements SimpleList<T> {
         return container[index];
     }
 
-
     @Override
     public int size() {
         return size;
