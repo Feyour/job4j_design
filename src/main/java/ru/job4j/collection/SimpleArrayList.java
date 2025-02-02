@@ -12,10 +12,14 @@ public class SimpleArrayList<T> implements SimpleList<T> {
         container = (T[]) new Object[capacity];
     }
 
+    public void arrSize() {
+        container = Arrays.copyOf(container, container.length == 0 ? 1 : container.length * 2);
+    }
+
     @Override
     public void add(T value) {
         if (size == container.length) {
-            container = Arrays.copyOf(container, container.length == 0 ? 1 : container.length * 2);
+            arrSize();
         }
         container[size] = value;
         size++;
@@ -58,6 +62,7 @@ public class SimpleArrayList<T> implements SimpleList<T> {
         }
         return container[index];
     }
+
 
     @Override
     public int size() {
