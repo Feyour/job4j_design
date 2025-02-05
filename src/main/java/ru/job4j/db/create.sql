@@ -1,0 +1,1 @@
+insert into cars(name, year, area) values('Chevtolet camaro', '2021', 'США');
